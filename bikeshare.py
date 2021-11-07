@@ -118,10 +118,8 @@ def time_stats(df):
     
 def station_stats(df):
     """Displays statistics on the most popular stations and trip.
-      Arg:
-         (str)- Start station column and End station in the data frame
-    Returns:
-        (str) - The Most Frequent start station and End stations of Travel filtered by month , day and hour"""
+    Arg:(str)- Start station column and End station in the data frame
+    Returns:(str) - The Most Frequent start station and End stations of Travel filtered by month , day and hour"""
     
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
