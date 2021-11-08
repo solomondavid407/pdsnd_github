@@ -29,8 +29,9 @@ def get_filters():
     city = input("Please enter your chosen city (chicago, new york city, washington): ").casefold()
     print('So you are interested in {} eeeh!'.format(city))
     while city not in cities: # execute this loop while the city variable does not have a value that exists in the cities list
-        print(Fore.RED + 'invalid input')
-        print('Data for {} city is not yet available!'.format(city))
+
+        print(Fore.RED + 'invalid input because data for {} city is not yet available!'.format(city))
+        print(Style.RESET_ALL)
         city = input("you should choose from (chicago, new york city, washington): ").casefold() # capture user input
         
    
@@ -38,27 +39,30 @@ def get_filters():
     
     print(color.UNDERLINE +'\t\t ***month of interest*** '+ color.END)     
     months= ['all','january','february','march','april','may','june'] # a python list of months
-    month = None
     month = input('please enter either  all,january, february, ...,june ,or"all" to apply no month filter:').casefold()
     while month not in months: # execute this loop while the month variable does not have a value that exists in the months list
+        # if the month variable does not take the all value   
+        print(Fore.RED + 'invalid input because Data for {} is not yet available!'.format(month) )  
+        print (Style.RESET_ALL)
+        # if the month variable does not take the all value
         month = input('please enter either  all,january, february, ...,june ,or"all" to apply no month filter:').casefold()
         print(Fore.RED + 'invalid input') # if the month variable does not take the all value
        
-    
+
     print(color.UNDERLINE +'\t\t ***Day of interest*** '+ color.END)  
     days= ['all','sunday','monday','tuesday','wednesday' ,'thursday','friday','saturday']# a python list of days
     day = None
     day = input('please  enter name of the day to filter by, or "all" to apply no day filter:').casefold()# capture user input
     while day not in days: # execute this loop while the day variable does not have a value that exists in the dayslist
-            day = input('please  enter name of the day to filter by, or "all" to apply no day filter:').casefold()# capture user input 
-            print(Fore.RED + 'invalid input') # if the day variable does not take the all value
-                    
+        day = input('please  enter name of the day to filter by, or "all" to apply no day filter:').casefold()# capture user input 
 
-    print('The data processed is for {} in month of {} on day of {}' .format(city, month, day).title())
-    print('-'*40)       
-    print( city, month, day)
-    print('-'*40)       
-    return city,month,day
+        print(Fore.RED + 'invalid input') # if the day variable does not take the all value
+        print (Style.RESET_ALL)       
+        print('The data processed is for {} in month of {} on day of {}' .format(city, month, day).title())
+        print('-'*40)       
+        print( city, month, day)
+        print('-'*40)       
+        return city,month,day
 
 def load_data(city, month, day):
     """
@@ -101,7 +105,7 @@ def load_data(city, month, day):
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
    
-    print('\nCalculating The Most Frequent Times of Travel...\n')
+    print('\033[34;42m \nCalculating The Most Frequent Times of Travel...\n \033[m')
     start_time = time.time()
 
     # display the most common month
@@ -121,7 +125,7 @@ def station_stats(df):
     Arg:(str)- Start station column and End station in the data frame
     Returns:(str) - The Most Frequent start station and End stations of Travel filtered by month , day and hour"""
     
-    print('\nCalculating The Most Popular Stations and Trip...\n')
+    print('\033[34;42m \nCalculating The Most Popular Stations and Trip...\n 033[m')
     start_time = time.time()
 
     # display most commonly used start station
@@ -138,7 +142,7 @@ def station_stats(df):
     
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
-    print('\nCalculating Trip Duration...\n')
+    print('\033[34;42m \nCalculating Trip Duration...\n 033[m')
     start_time = time.time()
 
     # display total travel time
@@ -154,26 +158,29 @@ def trip_duration_stats(df):
 def user_stats(df):
     """Displays statistics on bikeshare users. """
     
-    print('\nCalculating User Stats...\n')
+    print('\033[34;42m \nCalculating User Stats...\n \033[m')
     start_time = time.time()
 
     # Display counts of user types
-    
     User_Type_counts = df['User Type'].value_counts()
     print('The number of user sorted by type is ',User_Type_counts)
     
     # filter by gender and birth year if applicable
     cities = ['chicago', 'new york city', 'washington']
     
-        Gender_counts = df['Gender'].count() # Display counts per gender
+
+    Gender_counts = df['Gender'].count() # Display counts per gender
     # Display earliest, most recent, and most common year of birth
+
+
     Youngest_user = df['Birth Year'].max() 
     Oldest_User= df['Birth Year'].min()
     common_User_age = df['Birth Year'].mode() 
             
-        #else:
-    print(Fore.RED +'Gender and Birth year are not applicable to washington city')  #if city == washington:
-    print(Style.RESET_ALL)          
+
+    print('Gender and Birth year are not applicable to washington city')  #if city == washington:
+              
+
     print('\nThe number of users sorted by gender  is:\n ',Gender_counts)   
     print('\nThe oldest user was born in:\n' ,Oldest_User) 
     print('\nThe youngest user was born in:\n ',Youngest_user) 
@@ -184,18 +191,21 @@ def user_stats(df):
 def Five_rows(df):
     """Displays five rows of data  on bikeshare users from dataframe. """
     
-    print('\npreparing 5 rows of data...\n')
+    print('\033[34;42m \npreparing 5 rows of data...\n \033[m')
+   
     see = input('\nWould you like to see 5 rows of data? Enter yes or no.\n')
+ 
     start_loc = 0
     analyse= True
     while analyse:
-
-        print(df.iloc[start_loc:start_loc + 5])
+        print( df.iloc[start_loc:start_loc + 5])
         start_loc += 5
         see = input("Do you wish to continue?: ").lower()
         if see == "no":
             analyse = False
-        
+
+            print(Style.RESET_ALL)
+>>>>>>> refactoring
 def main():
     while True:
         city, month, day = get_filters()
