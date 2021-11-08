@@ -42,7 +42,7 @@ def get_filters():
     month = input('please enter either  all,january, february, ...,june ,or"all" to apply no month filter:').casefold()
     while month not in months: # execute this loop while the month variable does not have a value that exists in the months list
         # if the month variable does not take the all value   
-        print(Fore.RED + 'invalid input because Data for {}  is not yet available!'.format(month) )  
+        print(Fore.RED + 'invalid input because Data for {} is not yet available!'.format(month) )  
         print (Style.RESET_ALL)
         # if the month variable does not take the all value
         month = input('please enter either  all,january, february, ...,june ,or"all" to apply no month filter:').casefold()
