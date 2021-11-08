@@ -1,7 +1,7 @@
 import time
 import pandas as pd
 import numpy as np
-
+from colorama import Fore, Back, Style
 class color:
   
    BOLD = '\033[1m'
@@ -29,7 +29,8 @@ def get_filters():
     city = input("Please enter your chosen city (chicago, new york city, washington): ").casefold()
     print('So you are interested in {} eeeh!'.format(city))
     while city not in cities: # execute this loop while the city variable does not have a value that exists in the cities list
-        print("invalid input")
+        print(Fore.RED + 'invalid input')
+       # print("invalid input")
         print('Data for {} city is not yet available!'.format(city))
         city = input("you should choose from (chicago, new york city, washington): ").casefold() # capture user input
         
@@ -42,7 +43,7 @@ def get_filters():
     month = input('please enter either  all,january, february, ...,june ,or"all" to apply no month filter:').casefold()
     while month not in months: # execute this loop while the month variable does not have a value that exists in the months list
         month = input('please enter either  all,january, february, ...,june ,or"all" to apply no month filter:').casefold()
-        print('invalid input')  # if the month variable does not take the all value
+        print(Fore.RED + 'invalid input') # if the month variable does not take the all value
        
     
     print(color.UNDERLINE +'\t\t ***Day of interest*** '+ color.END)  
@@ -51,7 +52,7 @@ def get_filters():
     day = input('please  enter name of the day to filter by, or "all" to apply no day filter:').casefold()# capture user input
     while day not in days: # execute this loop while the day variable does not have a value that exists in the dayslist
             day = input('please  enter name of the day to filter by, or "all" to apply no day filter:').casefold()# capture user input 
-            print('invalid input') # if the day variable does not take the all value
+            print(Fore.RED + 'invalid input') # if the day variable does not take the all value
                     
 
     print('The data processed is for {} in month of {} on day of {}' .format(city, month, day).title())
