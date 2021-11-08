@@ -2,7 +2,7 @@
 
 ### Date created
 
-This project was created on thursday 4 November 2021  together with a README file
+This project was created on 10 october for bikeshare project and on thursday 4 November 2021  for a README file
 ### Project Title
 US BIKESHARE PROJECT
 
@@ -12,12 +12,12 @@ The project is provides statistics of US citizens of washington , chicago and ne
 
 ### Files used
 
-Data sets used all of .csv type that is washington.csv,chicago.csv and new_york_city.csv
+Data sets used all of " *.csv " type that is washington ,chicago  and new_york_city
 
 ### Credits
 
-in this project i acknowledge the following:
+In this project I acknowledge the following:
 - My instructors Richard, Juno, Juan and Derek for preparing wonderful interactive notes.
 - All my mentors for the fantastic timely support .
-- I acknowledge www.stackoverflow, www.github.com and www.google .com 
+- I acknowledge www.stackoverflow, www.github.com and www.google.com 
 Finally thanks to UDACITY

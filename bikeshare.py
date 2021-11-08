@@ -1,7 +1,7 @@
 import time
 import pandas as pd
 import numpy as np
-
+from colorama import Fore, Back, Style
 class color:
   
    BOLD = '\033[1m'
@@ -29,7 +29,7 @@ def get_filters():
     city = input("Please enter your chosen city (chicago, new york city, washington): ").casefold()
     print('So you are interested in {} eeeh!'.format(city))
     while city not in cities: # execute this loop while the city variable does not have a value that exists in the cities list
-        print("invalid input")
+        print(Fore.RED + 'invalid input')
         print('Data for {} city is not yet available!'.format(city))
         city = input("you should choose from (chicago, new york city, washington): ").casefold() # capture user input
         
@@ -42,7 +42,7 @@ def get_filters():
     month = input('please enter either  all,january, february, ...,june ,or"all" to apply no month filter:').casefold()
     while month not in months: # execute this loop while the month variable does not have a value that exists in the months list
         month = input('please enter either  all,january, february, ...,june ,or"all" to apply no month filter:').casefold()
-        print('invalid input')  # if the month variable does not take the all value
+        print(Fore.RED + 'invalid input') # if the month variable does not take the all value
        
     
     print(color.UNDERLINE +'\t\t ***Day of interest*** '+ color.END)  
@@ -51,7 +51,7 @@ def get_filters():
     day = input('please  enter name of the day to filter by, or "all" to apply no day filter:').casefold()# capture user input
     while day not in days: # execute this loop while the day variable does not have a value that exists in the dayslist
             day = input('please  enter name of the day to filter by, or "all" to apply no day filter:').casefold()# capture user input 
-            print('invalid input') # if the day variable does not take the all value
+            print(Fore.RED + 'invalid input') # if the day variable does not take the all value
                     
 
     print('The data processed is for {} in month of {} on day of {}' .format(city, month, day).title())
@@ -118,10 +118,8 @@ def time_stats(df):
     
 def station_stats(df):
     """Displays statistics on the most popular stations and trip.
-      Arg:
-         (str)- Start station column and End station in the data frame
-    Returns:
-        (str) - The Most Frequent start station and End stations of Travel filtered by month , day and hour"""
+    Arg:(str)- Start station column and End station in the data frame
+    Returns:(str) - The Most Frequent start station and End stations of Travel filtered by month , day and hour"""
     
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -160,25 +158,22 @@ def user_stats(df):
     start_time = time.time()
 
     # Display counts of user types
-    #User Type.reset_index()
-    #df_value_counts.columns = ['User Type', 'counts']
+    
     User_Type_counts = df['User Type'].value_counts()
     print('The number of user sorted by type is ',User_Type_counts)
     
     # filter by gender and birth year if applicable
     cities = ['chicago', 'new york city', 'washington']
     
-    #for city in cities:
-        #if ( city == 'chicago') or (city =='new york city'):
-    Gender_counts = df['Gender'].count() # Display counts per gender
-            # Display earliest, most recent, and most common year of birth
+        Gender_counts = df['Gender'].count() # Display counts per gender
+    # Display earliest, most recent, and most common year of birth
     Youngest_user = df['Birth Year'].max() 
     Oldest_User= df['Birth Year'].min()
     common_User_age = df['Birth Year'].mode() 
             
         #else:
-    print('Gender and Birth year are not applicable to washington city')  #if city == washington:
-              
+    print(Fore.RED +'Gender and Birth year are not applicable to washington city')  #if city == washington:
+    print(Style.RESET_ALL)          
     print('\nThe number of users sorted by gender  is:\n ',Gender_counts)   
     print('\nThe oldest user was born in:\n' ,Oldest_User) 
     print('\nThe youngest user was born in:\n ',Youngest_user) 
@@ -200,11 +195,7 @@ def Five_rows(df):
         see = input("Do you wish to continue?: ").lower()
         if see == "no":
             analyse = False
-        #if see.casefold() == 'yes':
-        #print(df.iloc[0:5] for i in range(len(df))
-        #else:
-           # print('Thank you for asking . I am exiting')
-                 # break
+        
 def main():
     while True:
         city, month, day = get_filters()
