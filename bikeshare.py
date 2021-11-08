@@ -30,7 +30,6 @@ def get_filters():
     print('So you are interested in {} eeeh!'.format(city))
     while city not in cities: # execute this loop while the city variable does not have a value that exists in the cities list
         print(Fore.RED + 'invalid input')
-       # print("invalid input")
         print('Data for {} city is not yet available!'.format(city))
         city = input("you should choose from (chicago, new york city, washington): ").casefold() # capture user input
         
@@ -159,18 +158,15 @@ def user_stats(df):
     start_time = time.time()
 
     # Display counts of user types
-    #User Type.reset_index()
-    #df_value_counts.columns = ['User Type', 'counts']
+    
     User_Type_counts = df['User Type'].value_counts()
     print('The number of user sorted by type is ',User_Type_counts)
     
     # filter by gender and birth year if applicable
     cities = ['chicago', 'new york city', 'washington']
     
-    #for city in cities:
-        #if ( city == 'chicago') or (city =='new york city'):
-    Gender_counts = df['Gender'].count() # Display counts per gender
-            # Display earliest, most recent, and most common year of birth
+        Gender_counts = df['Gender'].count() # Display counts per gender
+    # Display earliest, most recent, and most common year of birth
     Youngest_user = df['Birth Year'].max() 
     Oldest_User= df['Birth Year'].min()
     common_User_age = df['Birth Year'].mode() 
