@@ -176,8 +176,8 @@ def user_stats(df):
     common_User_age = df['Birth Year'].mode() 
             
         #else:
-    print('Gender and Birth year are not applicable to washington city')  #if city == washington:
-              
+    print(Fore.RED +'Gender and Birth year are not applicable to washington city')  #if city == washington:
+    print(Style.RESET_ALL)          
     print('\nThe number of users sorted by gender  is:\n ',Gender_counts)   
     print('\nThe oldest user was born in:\n' ,Oldest_User) 
     print('\nThe youngest user was born in:\n ',Youngest_user) 
@@ -199,11 +199,7 @@ def Five_rows(df):
         see = input("Do you wish to continue?: ").lower()
         if see == "no":
             analyse = False
-        #if see.casefold() == 'yes':
-        #print(df.iloc[0:5] for i in range(len(df))
-        #else:
-           # print('Thank you for asking . I am exiting')
-                 # break
+        
 def main():
     while True:
         city, month, day = get_filters()
